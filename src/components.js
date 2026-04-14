@@ -12,4 +12,9 @@
 // Both scaffold the file and add an entry here automatically.
 // --------------------------------------------------
 
-export default []
+export default [
+  {
+    selector: "[data-component='background-lines']",
+    importFn: () => import('./components/background-lines.js'),
+  },
+]
