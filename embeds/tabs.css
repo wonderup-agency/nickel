@@ -1,0 +1,18 @@
+/* ── tabs component ─────────────────────────────────────
+   Paste into Webflow → Project Settings → Custom Code → Head
+   (wrapped in <style> tags).
+
+   The only rule needed is hiding the standalone "−" icon —
+   the "+" icon's vertical legs retract via GSAP when a tab
+   activates, so the minus markup is redundant. Everything
+   else is styled manually in the Webflow Designer.
+   ─────────────────────────────────────────────────────── */
+
+[data-component='tabs'] [data-tabs='icon'] {
+  display: none;
+}
+
+/* Last tab link has no divider below it */
+[data-component='tabs'] [data-tabs='link']:last-child {
+  border-bottom-color: transparent;
+}

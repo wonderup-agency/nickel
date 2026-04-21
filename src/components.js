@@ -14,6 +14,18 @@
 
 export default [
   {
+    selector: "[data-component='tabs']",
+    importFn: () => import('./components/tabs.js'),
+  },
+  {
+    selector: "[data-component='carousel-large']",
+    importFn: () => import('./components/carousel-large.js'),
+  },
+  {
+    selector: "[data-component='navbar']",
+    importFn: () => import('./components/navbar.js'),
+  },
+  {
     selector: "[data-component='background-lines']",
     importFn: () => import('./components/background-lines.js'),
   },

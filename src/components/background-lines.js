@@ -14,13 +14,16 @@ Expected DOM:
  */
 export default function (elements) {
   if (typeof gsap === 'undefined') {
-    console.warn('[background-lines] GSAP not found on window — skipping animation')
+    console.warn(
+      '[background-lines] GSAP not found on window — skipping animation'
+    )
     return
   }
 
   // Mask sweeps top-to-bottom — each diagonal segment is drawn
   // progressively from its top end down to its bottom end.
-  const maskAt = (p) => `linear-gradient(to bottom, #000 ${p}%, transparent ${p}%)`
+  const maskAt = (p) =>
+    `linear-gradient(to bottom, #000 ${p}%, transparent ${p}%)`
 
   const animateLine = (line, delay = 0) => {
     line.style.webkitMaskImage = maskAt(0)
@@ -64,7 +67,6 @@ export default function (elements) {
         trigger: wrapper,
         start: 'top 85%',
         once: true,
-        markers: true,
         onEnter: play,
       })
     } else {

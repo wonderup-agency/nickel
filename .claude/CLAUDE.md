@@ -52,6 +52,7 @@ All docs in `.claude/rules/` directory:
 
 - `components/<name>.md` — One file per component
 - `pages/<name>.md` — One file per page bundle
+- `embeds/<name>.css` — CSS embed for components that create JS elements (paste into Webflow Custom Code)
 
 ## Documentation Maintenance
 
@@ -61,6 +62,7 @@ All docs in `.claude/rules/` directory:
 - `src/pages/<name>.js` → `.claude/rules/pages/<name>.md`
 - `rollup.config.dev.js` or `rollup.config.prod.js` → `ROLLUP.md`
 - `scripts/setup.js`, `create-component.js`, `create-page.js` → `SCRIPTS.md`
+- Component embed CSS changes → `embeds/<name>.css`
 - `src/main.js`, `src/components.js`, `src/config.js`, `src/components/global.js` → `ARCHITECTURE.md`
 - New pattern or naming rule introduced → `CONVENTIONS.md`
 - Files/directories added, moved, or removed → `FILE_STRUCTURE.md`

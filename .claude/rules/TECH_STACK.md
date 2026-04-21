@@ -47,3 +47,8 @@
 - **Runtime**: `picocolors` (used by scripts only, not bundled to browser)
 - **Dev**: All other deps are devDependencies (Rollup, ESLint, Prettier, etc.)
 - No frontend framework — vanilla JavaScript only
+
+## CDN Libraries (loaded in Webflow)
+
+- **GSAP** — loaded natively by Webflow on every page. Used as global `gsap`.
+- **Swiper** (v11) — loaded from jsDelivr CDN (`swiper-bundle.min.js` + `swiper-bundle.min.css`). Used as global `Swiper`. Add to pages that need a carousel.

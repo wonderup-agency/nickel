@@ -38,6 +38,10 @@
 │       ├── components/            Component documentation (one .md per component)
 │       └── pages/                 Page bundle documentation (one .md per page)
 │
+├── embeds/                        CSS embeds for Webflow Custom Code (one .css per feature)
+│   ├── navbar.css                 Navbar dropdown + mobile panel styles
+│   └── button.css                 Button hover arrow effect
+├── playground/                    Prototyping sandboxes (not deployed)
 ├── rollup.config.dev.js           Dev build config (sourcemaps, no minification)
 ├── rollup.config.prod.js          Prod build config (minified, no console)
 ├── eslint.config.js               ESLint flat config
@@ -64,4 +68,5 @@
 | Node scripts           | `scripts/`                                                    |
 | Component docs         | `.claude/rules/components/<name>.md`                          |
 | Page docs              | `.claude/rules/pages/<name>.md`                               |
+| Component CSS embeds   | `embeds/<name>.css`                                           |
 | Architecture docs      | `.claude/rules/`                                              |

@@ -1,0 +1,176 @@
+/* ══════════════════════════════════════════════════════════
+   Component: navbar
+   Webflow: Project Settings > Custom Code > Head
+   Wrap in <style>...</style> when pasting into Webflow
+   ══════════════════════════════════════════════════════════ */
+
+/* Hide native Webflow dropdown lists (both breakpoints) */
+[data-component='navbar'] .navbar_dropdown-list {
+  display: none !important;
+}
+/* Nav Icon */
+.nav_button-icon path {
+  stroke: var(--base--white);
+}
+/* Navbar style when mobile menu is open */
+@media (max-width: 991px) {
+  .navbar_component.is-menu-open {
+    background-color: var(--base--white) !important;
+  }
+  .navbar_component.is-menu-open .navbar_logo-link {
+    color: var(--base--red);
+  }
+  /* Nav Icon */
+  .nav_button-icon path {
+    stroke: var(--base--white);
+  }
+  /* Nav Icon */
+  .navbar_component.is-menu-open .nav_button-icon path {
+    stroke: var(--base--red);
+  }
+}
+
+/* ── Desktop (≥992px) ───────────────────────────────────── */
+@media (min-width: 992px) {
+  [data-component='navbar'] .navbar_menu-dropdown {
+    position: static;
+  }
+
+  .navbar_dropdown-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding-top: 0.75rem;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .navbar_dropdown-bg {
+    position: relative;
+    background-color: #fff;
+    border-radius: 0.75rem;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.04),
+      0 8px 40px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    pointer-events: auto;
+    width: 100%;
+  }
+
+  .navbar_dropdown-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+  }
+
+  .navbar_dropdown-panel .navbar_dropdow-inner-link {
+    position: relative;
+  }
+
+  /* Add class "navbar_dropdown-link-overlay" to the <a> inside each
+   dropdown card in Webflow (the invisible click target) */
+  .navbar_dropdown-panel .navbar_dropdown-link-overlay {
+    display: block;
+  }
+
+  .navbar_dropdown-panel .navbar_drowpdown-link-left {
+    color: var(--text-color--text-primary);
+  }
+
+  .navbar_dropdown-panel .navbar_dropdown-icon,
+  .navbar_dropdown-panel .navbar_drowpdown-link-left {
+    transition:
+      transform 0.25s ease,
+      color 0.25s ease;
+  }
+  .navbar_dropdown-panel
+    .navbar_dropdow-inner-link:hover
+    .navbar_dropdown-icon {
+    transform: rotate(-6deg);
+    color: #000;
+  }
+  .navbar_dropdown-panel
+    .navbar_dropdow-inner-link:hover
+    .navbar_drowpdown-link-left {
+    color: #000;
+  }
+
+  .navbar_dropdown-overlay {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 998;
+    pointer-events: none;
+  }
+} /* end desktop */
+
+/* ── Mobile (<992px) ────────────────────────────────────── */
+@media (max-width: 991px) {
+  [data-component='navbar'] .navbar_menu {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .navbar_mobile-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 0 0;
+    background: #fff;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 10001;
+  }
+
+  .navbar_mobile-back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: inherit;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    margin-bottom: 0.25rem;
+  }
+
+  /* Force cloned cards visible — Webflow may hide them
+   via interactions or dropdown-closed styles */
+  .navbar_mobile-panel .navbar_dropdow-inner-link {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto !important;
+    transform: none !important;
+    color: #1a1a1a !important;
+    padding: 0.75rem 1.25rem;
+  }
+
+  /* Reset all children too (Webflow IX2 can hide nested elements) */
+  .navbar_mobile-panel .navbar_dropdow-inner-link > * {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Hide the invisible link overlay — it covers content with white bg */
+  .navbar_mobile-panel .item-link {
+    display: none !important;
+  }
+
+  .navbar_mobile-panel .navbar_drowpdown-link-left {
+    color: var(--text-color--text-primary);
+  }
+} /* end mobile */
