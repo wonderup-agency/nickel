@@ -16,6 +16,8 @@ export default [
         clearTimeout: 'readonly',
         AbortController: 'readonly',
         MutationObserver: 'readonly',
+        NodeFilter: 'readonly',
+        CustomEvent: 'readonly',
         gsap: 'readonly',
         ScrollTrigger: 'readonly',
         Swiper: 'readonly',

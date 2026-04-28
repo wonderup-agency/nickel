@@ -40,7 +40,8 @@
 │
 ├── embeds/                        CSS embeds for Webflow Custom Code (one .css per feature)
 │   ├── navbar.css                 Navbar dropdown + mobile panel styles
-│   └── button.css                 Button hover arrow effect
+│   ├── button.css                 Button hover arrow effect
+│   └── counter.css                Odometer counter reel + static char layout
 ├── playground/                    Prototyping sandboxes (not deployed)
 ├── rollup.config.dev.js           Dev build config (sourcemaps, no minification)
 ├── rollup.config.prod.js          Prod build config (minified, no console)

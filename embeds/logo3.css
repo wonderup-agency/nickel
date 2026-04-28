@@ -1,0 +1,65 @@
+/* ══════════════════════════════════════════════════════════
+   Component: logo3 (infinite logo marquee, CSS-only)
+   Webflow: Project Settings > Custom Code > Head
+   Wrap in <style>...</style> when pasting into Webflow
+
+   Markup contract (data-attributes only — class-agnostic):
+     [data-logo="root"]   → outer section (overflow clip)
+     [data-logo="track"]  → animated flex container
+     [data-logo="list"]   → each list (must have exactly 2,
+                            with identical contents)
+     [data-logo="item"]   → each logo wrapper
+
+   INVARIANT: [data-logo="track"] must contain exactly two
+   [data-logo="list"] children with identical content. The
+   seamless loop relies on translateX(-50%) landing on a
+   visual duplicate of the start. Add/remove logos in BOTH.
+   ══════════════════════════════════════════════════════════ */
+
+[data-logo='root'] [data-logo='track'] {
+  width: max-content;
+  will-change: transform;
+  animation: logo3-marquee 40s linear infinite;
+  /* For a perfectly seamless loop, set the same `gap` here in
+     Webflow Designer as the one between items inside the list,
+     so the spacing between the two duplicate lists matches the
+     spacing between individual logos. */
+}
+
+[data-logo='root'] [data-logo='track']:hover {
+  animation-play-state: paused;
+}
+
+@keyframes logo3-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Direction control. Default = rtl (right → left).
+   Add data-logos-direction="ltr" (case-insensitive) on the
+   [data-logo="track"] itself to flip that track to left → right.
+   Each track is independent — siblings can run in opposite
+   directions. */
+[data-logo='track'][data-logos-left-to-right='True' i] {
+  animation-direction: reverse;
+}
+
+/* Reduced motion: disable scroll, lay logos out as a
+   centered, wrapping grid so they remain visible. */
+@media (prefers-reduced-motion: reduce) {
+  [data-logo='root'] [data-logo='track'] {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  [data-logo='root'] [data-logo='list'] {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

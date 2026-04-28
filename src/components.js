@@ -14,6 +14,22 @@
 
 export default [
   {
+    selector: "[data-component='counter']",
+    importFn: () => import('./components/counter.js'),
+  },
+  {
+    selector: "[data-component='timeline']",
+    importFn: () => import('./components/timeline.js'),
+  },
+  {
+    selector: "[data-component='timeline-vertical-lines']",
+    importFn: () => import('./components/timeline-vertical-lines.js'),
+  },
+  {
+    selector: "[data-component='pricing']",
+    importFn: () => import('./components/pricing.js'),
+  },
+  {
     selector: "[data-component='tabs']",
     importFn: () => import('./components/tabs.js'),
   },

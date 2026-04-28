@@ -1,0 +1,26 @@
+/* Pricing tabs — rules that can't be authored in the Webflow Designer.
+   Paste inside <style> in Project Settings → Custom Code → Head. */
+
+/* Pill injected by JS. Sits behind the links.
+   Visual styling (background, border-radius) is authored in Webflow
+   on the .pricing_tab-pill class. */
+[data-component='pricing'] .pricing_tab-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Links stack above the pill */
+[data-component='pricing'] .pricing_tab-link {
+  position: relative;
+  z-index: 1;
+  color: #000;
+}
+
+/* Active link — text flips to white. Pill provides the background. */
+[data-component='pricing'] .pricing_tab-link.is-active,
+[data-component='pricing'] .pricing_tab-link.is-active * {
+  color: #fff;
+}

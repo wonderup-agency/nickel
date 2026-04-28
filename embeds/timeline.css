@@ -1,0 +1,10 @@
+/* timeline component — OPTIONAL embed.
+   The JS now sets every structural style it needs inline via gsap.set, so
+   the component works with zero CSS embed. The only reason to paste this
+   into Webflow → Project Settings → Custom Code → Head is to avoid a brief
+   flash of the milestone icon before JS runs (defer + first paint).
+   If a flash of icons doesn't bother you, you can skip this embed. */
+
+[data-component='timeline'] .timeline_icon {
+  opacity: 0;
+}

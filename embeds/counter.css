@@ -1,0 +1,63 @@
+/* ══════════════════════════════════════════════════════════
+   Component: counter (odometer-style number reels)
+   Webflow: Project Settings > Custom Code > Head
+   Wrap in <style>...</style> when pasting into Webflow
+
+   Markup contract (data-attributes only — class-agnostic):
+     [data-component="counter"]  → host element (any classes welcome)
+     [data-counter="value"]      → set by JS on the inner text element;
+                                   becomes the inline-flex container
+     [data-counter="reel"]       → injected per digit; clips a 0–9 stack
+     [data-counter="stack"]      → the 0–9 column being translated
+     [data-counter="digit"]      → each digit cell inside the stack
+     [data-counter="static"]     → non-digit chars (",", ".", "x", "%", "$"…)
+   ══════════════════════════════════════════════════════════ */
+
+[data-counter='value'] {
+  display: inline-flex;
+  align-items: baseline;
+  line-height: 1;
+}
+
+[data-counter='reel'] {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  line-height: 1;
+  vertical-align: baseline;
+  /* clip-path (not overflow:hidden) clips the stack while preserving the
+     reel's text baseline. overflow:hidden would force baseline = bottom
+     edge per CSS spec, breaking alignment with sibling static chars
+     (+, %, ., $). */
+  clip-path: inset(0);
+}
+
+/* Invisible "0" gives the reel real in-flow text content so its baseline
+   matches the surrounding static chars. */
+[data-counter='reel']::before {
+  content: '0';
+  visibility: hidden;
+  display: inline-block;
+}
+
+[data-counter='stack'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  will-change: transform;
+}
+
+[data-counter='digit'] {
+  display: block;
+  height: 1em;
+  line-height: 1;
+}
+
+[data-counter='static'] {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: baseline;
+}
