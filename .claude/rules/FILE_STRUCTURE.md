@@ -41,7 +41,11 @@
 ├── embeds/                        CSS embeds for Webflow Custom Code (one .css per feature)
 │   ├── navbar.css                 Navbar dropdown + mobile panel styles
 │   ├── button.css                 Button hover arrow effect
-│   └── counter.css                Odometer counter reel + static char layout
+│   ├── counter.css                Odometer counter reel + static char layout
+│   ├── bento-layout.css           Bento grid spans driven by data-bento-span / rowspan
+│   ├── grid-custom.css            Custom grid spans driven by data-grid-colspan / rowspan
+│   ├── cards.css                  Cards hover system (rotating border, Ken Burns, icon scale, button-arrow trigger)
+│   └── background-lines.css       FOUC pre-hide for [data-component="background-lines"] until JS is ready
 ├── playground/                    Prototyping sandboxes (not deployed)
 ├── rollup.config.dev.js           Dev build config (sourcemaps, no minification)
 ├── rollup.config.prod.js          Prod build config (minified, no console)

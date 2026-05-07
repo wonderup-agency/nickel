@@ -1,0 +1,59 @@
+/* ══════════════════════════════════════════════════════════
+   Component: cards (hover system across all card types)
+   Targets:
+     .card-images_card     Ken Burns drift on bg image + button arrow
+     .carousel-large_item  Ken Burns drift on bg image + button arrow
+     .card-resources_item  Ken Burns drift on bg image + button arrow
+     .card-product_item    Ken Burns drift on bg image
+     .bento-layout_card    Ken Burns drift on bento image
+     .card_item            icon scale + slight rotate + button arrow
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Ken Burns drift on the inner image ──────────────────── */
+.card-images_card .card-images_bg-img,
+.carousel-large_item .carousel-large_item-img,
+.card-resources_item .card-resources_image,
+.card-product_item .card-product_image,
+.bento-layout_card .bento-layout_image {
+  transform-origin: 30% 70%;
+  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.card-images_card:hover .card-images_bg-img,
+.carousel-large_item:hover .carousel-large_item-img,
+.card-resources_item:hover .card-resources_image,
+.card-product_item:hover .card-product_image,
+.bento-layout_card:hover .bento-layout_image {
+  transform: scale(1.08) translate(-1.5%, -1.5%);
+}
+
+/* ── Card 4 (.card_item) — icon scale + slight rotate on hover ── */
+.card_item .card_img {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.card_item:hover .card_img {
+  transform: scale(1.18) rotate(-4deg);
+}
+
+/* ── Button arrow trigger on card hover ─────────────────── */
+/* Base arrow animation lives in embeds/button.css. This block hooks it
+   up so it also fires when the parent card is hovered, not only when
+   the button itself is hovered. */
+.card-images_card:hover     .button .button_icon-slot svg path:nth-child(1),
+.carousel-large_item:hover  .button .button_icon-slot svg path:nth-child(1),
+.card_item:hover            .button .button_icon-slot svg path:nth-child(1),
+.card-resources_item:hover  .button .button_icon-slot svg path:nth-child(1),
+.card-product_item:hover    .button .button_icon-slot svg path:nth-child(1) {
+  opacity: 1;
+}
+
+.card-images_card:hover     .button .button_icon-slot svg path:nth-child(2),
+.carousel-large_item:hover  .button .button_icon-slot svg path:nth-child(2),
+.card_item:hover            .button .button_icon-slot svg path:nth-child(2),
+.card-resources_item:hover  .button .button_icon-slot svg path:nth-child(2),
+.card-product_item:hover    .button .button_icon-slot svg path:nth-child(2) {
+  transform: translateX(0);
+}

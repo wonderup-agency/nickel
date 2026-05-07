@@ -1,0 +1,133 @@
+/* grid-custom — fully numeric custom grid. Independent from bento-layout.
+   Wrapper declares cols + gap, each card declares colspan / rowspan.
+   !important is intentional: Webflow's grid system auto-assigns grid-area to
+   children via #w-node-... rules, which would otherwise win the specificity. */
+
+[data-component="grid-custom"] .grid-custom_list {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr); /* fallback if data-grid-cols is missing */
+  grid-auto-flow: dense;
+}
+
+/* ── Wrapper: variable column count (data-grid-cols, 2–12) ─────────── */
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="2"]  { grid-template-columns: repeat(2,  1fr) !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="3"]  { grid-template-columns: repeat(3,  1fr) !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="4"]  { grid-template-columns: repeat(4,  1fr) !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="5"]  { grid-template-columns: repeat(5,  1fr) !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="6"]  { grid-template-columns: repeat(6,  1fr) !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="7"]  { grid-template-columns: repeat(7,  1fr) !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="8"]  { grid-template-columns: repeat(8,  1fr) !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="9"]  { grid-template-columns: repeat(9,  1fr) !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="10"] { grid-template-columns: repeat(10, 1fr) !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="11"] { grid-template-columns: repeat(11, 1fr) !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-cols="12"] { grid-template-columns: repeat(12, 1fr) !important; }
+
+/* ── Wrapper: optional gap utility (data-grid-gap, in rem) ─────────── */
+[data-component="grid-custom"] .grid-custom_list[data-grid-gap="0"]    { gap: 0 !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-gap="0.25"] { gap: 0.25rem !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-gap="0.5"]  { gap: 0.5rem !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-gap="0.75"] { gap: 0.75rem !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-gap="1"]    { gap: 1rem !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-gap="1.5"]  { gap: 1.5rem !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-gap="2"]    { gap: 2rem !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-gap="2.5"]  { gap: 2.5rem !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-gap="3"]    { gap: 3rem !important; }
+[data-component="grid-custom"] .grid-custom_list[data-grid-gap="4"]    { gap: 4rem !important; }
+
+/* ── Card: column span (data-grid-colspan, 1–12) ───────────────────── */
+[data-component="grid-custom"] .grid-custom_card                          { grid-column: span 1 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="1"]   { grid-column: span 1 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="2"]   { grid-column: span 2 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="3"]   { grid-column: span 3 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="4"]   { grid-column: span 4 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="5"]   { grid-column: span 5 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="6"]   { grid-column: span 6 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="7"]   { grid-column: span 7 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="8"]   { grid-column: span 8 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="9"]   { grid-column: span 9 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="10"]  { grid-column: span 10 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="11"]  { grid-column: span 11 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-colspan="12"]  { grid-column: span 12 !important; }
+
+/* ── Card: row span (data-grid-rowspan, 2–5; 1 is the default) ─────── */
+[data-component="grid-custom"] .grid-custom_card[data-grid-rowspan="2"]   { grid-row: span 2 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-rowspan="3"]   { grid-row: span 3 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-rowspan="4"]   { grid-row: span 4 !important; }
+[data-component="grid-custom"] .grid-custom_card[data-grid-rowspan="5"]   { grid-row: span 5 !important; }
+
+/* ── Tablet (≤991px): 2-column grid ──────────────────────────────────
+   Auto-collapse: any card spanning >50% of its desktop cols becomes full-width
+   on tablet. Below the threshold, cards go half-width. The editor can also
+   force full-width with data-grid-tablet="full". */
+@media (max-width: 991px) {
+  [data-component="grid-custom"] .grid-custom_list,
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  [data-component="grid-custom"] .grid-custom_card,
+  [data-component="grid-custom"] .grid-custom_card[data-grid-colspan] {
+    grid-column: span 1 !important;
+  }
+  [data-component="grid-custom"] .grid-custom_card[data-grid-rowspan] {
+    grid-row: auto !important;
+  }
+
+  /* Auto-promote >50% spans to full-width on tablet (one selector per cols × colspan combo). */
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="2"]  > .grid-custom_card[data-grid-colspan="2"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="3"]  > .grid-custom_card[data-grid-colspan="2"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="3"]  > .grid-custom_card[data-grid-colspan="3"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="4"]  > .grid-custom_card[data-grid-colspan="3"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="4"]  > .grid-custom_card[data-grid-colspan="4"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="5"]  > .grid-custom_card[data-grid-colspan="3"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="5"]  > .grid-custom_card[data-grid-colspan="4"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="5"]  > .grid-custom_card[data-grid-colspan="5"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="6"]  > .grid-custom_card[data-grid-colspan="4"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="6"]  > .grid-custom_card[data-grid-colspan="5"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="6"]  > .grid-custom_card[data-grid-colspan="6"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="7"]  > .grid-custom_card[data-grid-colspan="4"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="7"]  > .grid-custom_card[data-grid-colspan="5"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="7"]  > .grid-custom_card[data-grid-colspan="6"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="7"]  > .grid-custom_card[data-grid-colspan="7"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="8"]  > .grid-custom_card[data-grid-colspan="5"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="8"]  > .grid-custom_card[data-grid-colspan="6"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="8"]  > .grid-custom_card[data-grid-colspan="7"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="8"]  > .grid-custom_card[data-grid-colspan="8"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="9"]  > .grid-custom_card[data-grid-colspan="5"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="9"]  > .grid-custom_card[data-grid-colspan="6"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="9"]  > .grid-custom_card[data-grid-colspan="7"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="9"]  > .grid-custom_card[data-grid-colspan="8"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="9"]  > .grid-custom_card[data-grid-colspan="9"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="10"] > .grid-custom_card[data-grid-colspan="6"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="10"] > .grid-custom_card[data-grid-colspan="7"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="10"] > .grid-custom_card[data-grid-colspan="8"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="10"] > .grid-custom_card[data-grid-colspan="9"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="10"] > .grid-custom_card[data-grid-colspan="10"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="11"] > .grid-custom_card[data-grid-colspan="6"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="11"] > .grid-custom_card[data-grid-colspan="7"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="11"] > .grid-custom_card[data-grid-colspan="8"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="11"] > .grid-custom_card[data-grid-colspan="9"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="11"] > .grid-custom_card[data-grid-colspan="10"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="11"] > .grid-custom_card[data-grid-colspan="11"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="12"] > .grid-custom_card[data-grid-colspan="7"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="12"] > .grid-custom_card[data-grid-colspan="8"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="12"] > .grid-custom_card[data-grid-colspan="9"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="12"] > .grid-custom_card[data-grid-colspan="10"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="12"] > .grid-custom_card[data-grid-colspan="11"],
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols="12"] > .grid-custom_card[data-grid-colspan="12"],
+  [data-component="grid-custom"] .grid-custom_card[data-grid-tablet="full"] {
+    grid-column: span 2 !important;
+  }
+}
+
+/* ── Mobile (≤767px): single-column stack ──────────────────────────── */
+@media (max-width: 767px) {
+  [data-component="grid-custom"] .grid-custom_list,
+  [data-component="grid-custom"] .grid-custom_list[data-grid-cols] {
+    grid-template-columns: 1fr !important;
+  }
+  [data-component="grid-custom"] .grid-custom_card,
+  [data-component="grid-custom"] .grid-custom_card[data-grid-colspan],
+  [data-component="grid-custom"] .grid-custom_card[data-grid-tablet] {
+    grid-column: span 1 !important;
+  }
+}

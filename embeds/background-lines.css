@@ -1,0 +1,16 @@
+/* ══════════════════════════════════════════════════════════
+   Component: background-lines (FOUC pre-hide)
+   Webflow: Project Settings > Custom Code > Head
+   Wrap in <style>...</style> when pasting into Webflow
+
+   Hides the diagonal lines on first paint, before the JS loads,
+   so they don't flash visible and then re-animate when GSAP kicks in.
+
+   Released by JS as soon as it takes over (it adds `.is-ready` to the
+   wrapper, which removes this rule from the cascade).
+   ══════════════════════════════════════════════════════════ */
+
+[data-component="background-lines"]:not(.is-ready) .background_lines {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 0%);
+          mask-image: linear-gradient(to bottom, #000 0%, transparent 0%);
+}

@@ -14,6 +14,10 @@
 
 export default [
   {
+    selector: "[data-component='logos-marquee']",
+    importFn: () => import('./components/logos-marquee.js'),
+  },
+  {
     selector: "[data-component='counter']",
     importFn: () => import('./components/counter.js'),
   },
