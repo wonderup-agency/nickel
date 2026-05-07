@@ -42,18 +42,18 @@
 /* Base arrow animation lives in embeds/button.css. This block hooks it
    up so it also fires when the parent card is hovered, not only when
    the button itself is hovered. */
-.card-images_card:hover     .button .button_icon-slot svg path:nth-child(1),
-.carousel-large_item:hover  .button .button_icon-slot svg path:nth-child(1),
-.card_item:hover            .button .button_icon-slot svg path:nth-child(1),
-.card-resources_item:hover  .button .button_icon-slot svg path:nth-child(1),
-.card-product_item:hover    .button .button_icon-slot svg path:nth-child(1) {
+.card-images_card:hover .button .button_icon-slot svg path:nth-child(1),
+.carousel-large_item:hover .button .button_icon-slot svg path:nth-child(1),
+.card_item:hover .button .button_icon-slot svg path:nth-child(1),
+.card-resources_item:hover .button .button_icon-slot svg path:nth-child(1),
+.card-product_item:hover .button .button_icon-slot svg path:nth-child(1) {
   opacity: 1;
 }
 
-.card-images_card:hover     .button .button_icon-slot svg path:nth-child(2),
-.carousel-large_item:hover  .button .button_icon-slot svg path:nth-child(2),
-.card_item:hover            .button .button_icon-slot svg path:nth-child(2),
-.card-resources_item:hover  .button .button_icon-slot svg path:nth-child(2),
-.card-product_item:hover    .button .button_icon-slot svg path:nth-child(2) {
+.card-images_card:hover .button .button_icon-slot svg path:nth-child(2),
+.carousel-large_item:hover .button .button_icon-slot svg path:nth-child(2),
+.card_item:hover .button .button_icon-slot svg path:nth-child(2),
+.card-resources_item:hover .button .button_icon-slot svg path:nth-child(2),
+.card-product_item:hover .button .button_icon-slot svg path:nth-child(2) {
   transform: translateX(0);
 }

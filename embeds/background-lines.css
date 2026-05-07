@@ -10,7 +10,7 @@
    wrapper, which removes this rule from the cascade).
    ══════════════════════════════════════════════════════════ */
 
-[data-component="background-lines"]:not(.is-ready) .background_lines {
+[data-component='background-lines']:not(.is-ready) .background_lines {
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 0%);
-          mask-image: linear-gradient(to bottom, #000 0%, transparent 0%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 0%);
 }

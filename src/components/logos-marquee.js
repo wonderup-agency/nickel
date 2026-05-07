@@ -16,7 +16,9 @@ export default function (elements) {
     const lists = root.querySelectorAll('[data-logo="list"]')
     lists.forEach((list) => {
       if (list.dataset.logosMarqueeCloned === 'true') return
-      const items = Array.from(list.querySelectorAll(':scope > [data-logo="item"]'))
+      const items = Array.from(
+        list.querySelectorAll(':scope > [data-logo="item"]')
+      )
       if (items.length === 0) return
       items.forEach((item) => {
         const clone = item.cloneNode(true)
@@ -33,7 +35,9 @@ export default function (elements) {
         const allItems = list.querySelectorAll(':scope > [data-logo="item"]')
         const firstItem = allItems[0]
         const firstImg = firstItem?.querySelector('img')
-        const firstItemCS = firstItem ? window.getComputedStyle(firstItem) : null
+        const firstItemCS = firstItem
+          ? window.getComputedStyle(firstItem)
+          : null
         const firstImgCS = firstImg ? window.getComputedStyle(firstImg) : null
         console.log('[logos-marquee] list layout', {
           items: allItems.length,
@@ -44,10 +48,14 @@ export default function (elements) {
           parentWidth: window.getComputedStyle(list.parentNode).width,
           parentOverflow: window.getComputedStyle(list.parentNode).overflow,
           listBoundingRectWidth: Math.round(list.getBoundingClientRect().width),
-          firstItemBoxWidth: firstItem ? Math.round(firstItem.getBoundingClientRect().width) : null,
+          firstItemBoxWidth: firstItem
+            ? Math.round(firstItem.getBoundingClientRect().width)
+            : null,
           firstItemComputedWidth: firstItemCS?.width,
           firstItemFlexShrink: firstItemCS?.flexShrink,
-          firstImgBoxWidth: firstImg ? Math.round(firstImg.getBoundingClientRect().width) : null,
+          firstImgBoxWidth: firstImg
+            ? Math.round(firstImg.getBoundingClientRect().width)
+            : null,
           firstImgComputedWidth: firstImgCS?.width,
         })
       })
