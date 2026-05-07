@@ -42,7 +42,7 @@ Swiper classes (`swiper`, `swiper-wrapper`, `swiper-slide`) must be on the eleme
 - Initializes a Swiper instance on each matching element.
 - **Desktop (≥992px):** `slidesPerView: "auto"` (respects CSS max-width), 24px gap.
 - **Tablet (≥768px):** ~2.15 slides visible, 20px gap.
-- **Mobile landscape (≥480px):** ~1.25 slides visible, 16px gap.
+- **Mobile landscape (≥480px):** 1 slide visible, 16px gap.
 - **Mobile portrait (<480px):** ~1.15 slides visible, 16px gap.
 - **Initial slide**: starts on index 1 (second slide).
 - **Centered slides**: active slide is centered in the viewport.

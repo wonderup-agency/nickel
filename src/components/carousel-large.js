@@ -27,7 +27,7 @@ export default function (elements) {
       rewind: true,
       breakpoints: {
         480: {
-          slidesPerView: 1.25,
+          slidesPerView: 1,
           spaceBetween: 16,
         },
         768: {
