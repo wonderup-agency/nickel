@@ -19,6 +19,7 @@ export default [
         performance: 'readonly',
         AbortController: 'readonly',
         MutationObserver: 'readonly',
+        IntersectionObserver: 'readonly',
         NodeFilter: 'readonly',
         CustomEvent: 'readonly',
         gsap: 'readonly',

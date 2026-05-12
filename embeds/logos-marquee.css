@@ -1,52 +1,26 @@
-/* ══════════════════════════════════════════════════════════
-   Component: logos-marquee (infinite logo marquee)
-   Webflow: Project Settings > Custom Code > Head
-   Wrap in <style>...</style> when pasting into Webflow
-
-   Markup contract (data-attributes only — class-agnostic):
-     [data-component="logos-marquee"] → root (loads the JS that
-                                duplicates the items inside the list)
-     [data-logo="root"]       → outer section (overflow clip)
-     [data-logo="track"]      → optional wrapper (hover boundary).
-                                Not strictly required by the CSS;
-                                the animation runs on the list.
-     [data-logo="list"]       → flex container holding the items.
-                                JS doubles its items on init.
-     [data-logo="item"]       → each logo wrapper
-
-   INVARIANT: the seamless loop animates translateX(0 → -50%) on
-   the LIST, so the list must contain exactly 2× the original
-   item count at runtime. JS handles that by cloning each
-   [data-logo="item"] and appending it back into the same list.
-   ══════════════════════════════════════════════════════════ */
+/* logos-marquee — Webflow → Project Settings → Custom Code → Head */
 
 [data-logo='root'] [data-logo='list'] {
   width: max-content;
   will-change: transform;
-  animation: logos-marquee-marquee 40s linear infinite;
-  /* The list must be `display: flex` with a consistent `gap` —
-     set both in the Webflow Designer. The same gap applies to
-     the seam between the original tail and the cloned head, so
-     the loop reads as continuous. */
+  animation: logos-marquee-marquee var(--marquee-duration, 40s) linear infinite;
 }
 
-[data-logo='root'] [data-logo='list']:hover {
+[data-logo='root'] [data-logo='list'].is-marquee-paused {
   animation-play-state: paused;
 }
 
-/* Hover-isolate: when the list is hovered, desaturate every logo
-   and restore color only on the one currently under the cursor. */
 [data-logo='root'] [data-logo='item'] {
-  filter: grayscale(0);
+  filter: grayscale(0) blur(0);
   transition: filter 0.3s ease;
 }
 
-[data-logo='root'] [data-logo='list']:hover [data-logo='item'] {
-  filter: grayscale(1);
+[data-logo='root'] [data-logo='list'].is-marquee-paused [data-logo='item'] {
+  filter: grayscale(1) blur(1px);
 }
 
-[data-logo='root'] [data-logo='list']:hover [data-logo='item']:hover {
-  filter: grayscale(0);
+[data-logo='root'] [data-logo='list'].is-marquee-paused [data-logo='item']:hover {
+  filter: grayscale(0) blur(0);
 }
 
 @keyframes logos-marquee-marquee {
@@ -54,20 +28,14 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-1 * var(--marquee-distance, 50%)));
   }
 }
 
-/* Direction control. Default = rtl (right → left).
-   Add data-logos-direction="ltr" (case-insensitive) on the
-   [data-logo="list"] to flip that list to left → right. Each
-   list is independent — siblings can run in opposite directions. */
-[data-logo='list'][data-logos-direction='ltr' i] {
+[data-logo='list'][data-logos-left-to-right='true' i] {
   animation-direction: reverse;
 }
 
-/* Reduced motion: disable scroll, let logos wrap as a centered
-   grid so they remain visible. */
 @media (prefers-reduced-motion: reduce) {
   [data-logo='root'] [data-logo='list'] {
     animation: none;
