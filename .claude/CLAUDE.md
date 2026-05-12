@@ -47,6 +47,7 @@ All docs in `.claude/rules/` directory:
 
 - `ROLLUP.md` — Build configuration for dev and prod
 - `SCRIPTS.md` — Scaffolding scripts (create-component, create-page)
+- `FLOWBOARD.md` — **Always consult before generating HTML/CSS structures for the Flowboard paste extension.** Lists the selectors, pseudo-classes, and CSS shorthands Webflow's publish validator rejects, and the patterns to use instead. Triggers: "una estructura para Flowboard", "paste extension", "estructura para Webflow", "copia-pega a Webflow", or any request to produce a one-shot HTML+CSS payload destined for the Webflow Designer.
 
 **Component & page docs (auto-maintained):**
 

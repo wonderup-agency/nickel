@@ -32,6 +32,7 @@
 │       ├── ARCHITECTURE.md        System design and data flow
 │       ├── CONVENTIONS.md         Code standards and patterns
 │       ├── FILE_STRUCTURE.md      This file
+│       ├── FLOWBOARD.md           Rules for generating HTML/CSS that Flowboard parses + Webflow can publish
 │       ├── ROLLUP.md              Build configuration
 │       ├── SCRIPTS.md             Scaffolding scripts (create-component, create-page)
 │       ├── TECH_STACK.md          Tools and frameworks
