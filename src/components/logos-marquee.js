@@ -99,9 +99,7 @@ const ensureMarquee = (root, list) => {
  */
 export default function (elements) {
   elements.forEach((root) => {
-    const groupLists = Array.from(
-      root.querySelectorAll('[data-logo="list"]')
-    )
+    const groupLists = Array.from(root.querySelectorAll('[data-logo="list"]'))
     if (groupLists.length === 0) return
 
     groupLists.forEach((list) => {

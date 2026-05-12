@@ -19,7 +19,9 @@
   filter: grayscale(1) blur(1px);
 }
 
-[data-logo='root'] [data-logo='list'].is-marquee-paused [data-logo='item']:hover {
+[data-logo='root']
+  [data-logo='list'].is-marquee-paused
+  [data-logo='item']:hover {
   filter: grayscale(0) blur(0);
 }
 
