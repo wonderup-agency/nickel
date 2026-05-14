@@ -1,0 +1,52 @@
+/* global animations — paste into Webflow > Project Settings > Custom Code > Head */
+
+/* Anti-FOUC: hide every animated wrapper until JS adds .is-ready */
+[data-component='fade-in']:not(.is-ready),
+[data-component='fade-up']:not(.is-ready),
+[data-component='fade-blur']:not(.is-ready),
+[data-component='fade-stagger']:not(.is-ready) {
+  opacity: 0;
+}
+
+/* Single-element variants: initial transform / filter on the wrapper */
+[data-component='fade-up']:not(.is-ready) {
+  transform: translateY(24px);
+}
+[data-component='fade-blur']:not(.is-ready) {
+  filter: blur(12px);
+}
+
+/* Stagger wrappers: wrapper stays visible, children carry the hidden state. */
+[data-component^='fade-'].has-children:not(.is-ready) {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+[data-component^='fade-'].has-children:not(.is-ready) > *,
+[data-component='fade-stagger']:not(.is-ready) > * {
+  opacity: 0;
+}
+[data-component='fade-up'].has-children:not(.is-ready) > *,
+[data-component='fade-stagger']:not(.is-ready) > * {
+  transform: translateY(24px);
+}
+[data-component='fade-blur'].has-children:not(.is-ready) > * {
+  filter: blur(12px);
+}
+
+/* Reduced motion: bypass everything, render final state. JS also marks them
+   .is-ready, but this guarantees no flash even before the script runs. */
+@media (prefers-reduced-motion: reduce) {
+  [data-component='fade-in'],
+  [data-component='fade-up'],
+  [data-component='fade-blur'],
+  [data-component='fade-stagger'],
+  [data-component='fade-in'] > *,
+  [data-component='fade-up'] > *,
+  [data-component='fade-blur'] > *,
+  [data-component='fade-stagger'] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

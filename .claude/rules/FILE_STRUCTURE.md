@@ -46,7 +46,9 @@
 │   ├── bento-layout.css           Bento grid spans driven by data-bento-span / rowspan
 │   ├── grid-custom.css            Custom grid spans driven by data-grid-colspan / rowspan
 │   ├── cards.css                  Cards hover system (rotating border, Ken Burns, icon scale, button-arrow trigger)
-│   └── background-lines.css       FOUC pre-hide for [data-component="background-lines"] until JS is ready
+│   ├── background-lines.css       FOUC pre-hide for [data-component="background-lines"] until JS is ready
+│   ├── connect-form.css           Connect-form switcher (card hover + form pre-hide) + form-specific overrides (custom checkbox, intl-tel-input, thank-you block)
+│   └── global-animations.css      FOUC pre-hide + reduced-motion bypass for all [data-component="fade-*"] / [data-component="text-reveal"] variants
 ├── playground/                    Prototyping sandboxes (not deployed)
 ├── rollup.config.dev.js           Dev build config (sourcemaps, no minification)
 ├── rollup.config.prod.js          Prod build config (minified, no console)

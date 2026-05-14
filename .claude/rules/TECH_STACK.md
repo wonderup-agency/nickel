@@ -44,7 +44,10 @@
 
 ## Dependencies
 
-- **Runtime**: `picocolors` (used by scripts only, not bundled to browser)
+- **Runtime**:
+  - `picocolors` — used by Node scripts only, not bundled to the browser
+  - `intl-tel-input` (v28) — international phone input with country picker. Bundled via Rollup; consumed by `connect-form.js`. CSS is extracted into `dist/styles.css`; the flag sprite is loaded at runtime from `cdn.jsdelivr.net/npm/intl-tel-input@28/dist/img/` via CSS-variable overrides set on `document.documentElement`.
+  - `lenis` (v1.3) — site-wide smooth scroll. Initialized in `src/components/global.js`. RAF is driven by `gsap.ticker` so the scroll position is in sync with every ScrollTrigger / GSAP tween. Exposed on `window.__lenis` so other components can call `lenis.scrollTo(target)`. Disabled when `prefers-reduced-motion: reduce` matches.
 - **Dev**: All other deps are devDependencies (Rollup, ESLint, Prettier, etc.)
 - No frontend framework — vanilla JavaScript only
 

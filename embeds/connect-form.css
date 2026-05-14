@@ -1,0 +1,288 @@
+/* connect-form — paste into Webflow > Project Settings > Custom Code > Head */
+
+/* Thank-you block (Webflow .w-form-done) */
+[data-component='connect-form'] .w-form-done {
+  padding-top: var(--_spacers---48);
+  padding-bottom: var(--_spacers---48);
+  padding-left: var(--_spacers---32);
+  padding-right: var(--_spacers---32);
+  background-color: var(--background-color--background-primary);
+  border-radius: 0.75rem;
+  text-align: left;
+}
+[data-component='connect-form'] .connect-form_thank-you-title {
+  font-family: var(--_typography---family--headings);
+  font-size: var(--_typography---h2--size-h2);
+  color: var(--text-color--text-secondary);
+  margin-bottom: var(--_spacers---12);
+}
+[data-component='connect-form'] .connect-form_thank-you-body {
+  font-size: var(--_typography---regular--size-regular);
+  color: var(--text-color--text-primary);
+  line-height: 1.5;
+}
+
+/* Custom checkbox */
+[data-component='connect-form'] .connect-form_checkbox-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  margin: 0;
+}
+[data-component='connect-form'] .connect-form_checkbox-box {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px 12px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+[data-component='connect-form'] .connect-form_checkbox.is-checked .connect-form_checkbox-box {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M3.5 8.5l3 3 6-6'/%3e%3c/svg%3e");
+}
+[data-component='connect-form'] .connect-form_checkbox-input:focus-visible + .connect-form_checkbox-box {
+  outline: 2px solid var(--system--focus-state);
+  outline-offset: 2px;
+}
+
+/* intl-tel-input trigger (inside the input) */
+[data-component='connect-form'] .iti {
+  width: 100%;
+}
+[data-component='connect-form'] .iti__selected-flag {
+  background-color: transparent;
+  border-radius: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.75rem;
+}
+[data-component='connect-form'] .iti__selected-flag:hover,
+[data-component='connect-form'] .iti__selected-flag:focus {
+  background-color: transparent;
+}
+[data-component='connect-form'] .iti--separate-dial-code .iti__selected-dial-code {
+  font-family: var(--_typography---family--body);
+  font-size: 1rem;
+  color: var(--text-color--text-secondary);
+  letter-spacing: -0.02em;
+  margin-left: 0.5rem;
+}
+[data-component='connect-form'] .iti__arrow {
+  border-top-color: var(--text-color--text-primary);
+  margin-left: 6px;
+  transition: transform 0.2s ease;
+}
+[data-component='connect-form'] .iti--separate-dial-code input[type='tel'] {
+  padding-left: 5rem;
+}
+
+/* intl-tel-input dropdown (rendered inside <body>, selectors unscoped) */
+.iti__country-list {
+  max-height: 30vh;
+  border-radius: 0.5rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--border-color--border-primary);
+  box-shadow: 0 8px 24px rgba(10, 10, 10, 0.08);
+  font-family: var(--_typography---family--body);
+  background-color: var(--background-color--background-primary);
+  overflow-y: auto;
+}
+.iti__country {
+  font-family: var(--_typography---family--body);
+  font-size: 1rem;
+  color: var(--text-color--text-secondary);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.iti__country.iti__highlight {
+  background-color: var(--base--light-gray);
+}
+.iti__divider {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--border-color--border-primary);
+}
+.iti__dial-code {
+  color: var(--text-color--text-primary);
+}
+.iti__search-input {
+  font-family: var(--_typography---family--body);
+  font-size: 1rem;
+  color: var(--text-color--text-secondary);
+  border-style: none none solid none;
+  border-width: 0 0 1px 0;
+  border-color: var(--border-color--border-primary);
+  background-color: transparent;
+  border-radius: 0;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+.iti__search-input:focus {
+  outline-style: none;
+  border-bottom-color: var(--system--focus-state);
+}
+
+/* Custom dropdown (replaces native <select>.connect-form_select) */
+[data-component='connect-form'] .connect-form_dropdown {
+  position: relative;
+  width: 100%;
+}
+[data-component='connect-form'] .connect-form_dropdown-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: var(--background-color--background-primary);
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--border-color--border-primary);
+  border-radius: 0.5rem;
+  font-family: var(--_typography---family--body);
+  font-size: 1rem;
+  color: var(--text-color--text-secondary);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+[data-component='connect-form'] .connect-form_dropdown-trigger:focus {
+  outline-style: none;
+  border-color: var(--system--focus-state);
+  box-shadow: 0 0 0 3px rgba(97, 28, 51, 0.12);
+}
+[data-component='connect-form'] .connect-form_dropdown-value[data-placeholder='true'] {
+  opacity: 0.6;
+}
+[data-component='connect-form'] .connect-form_dropdown-chevron {
+  width: 8px;
+  height: 8px;
+  border-style: solid;
+  border-color: var(--text-color--text-primary);
+  border-top-width: 0;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 0;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.2s ease;
+}
+[data-component='connect-form'] .connect-form_dropdown.is-open .connect-form_dropdown-chevron {
+  transform: rotate(-135deg) translateY(-2px);
+}
+[data-component='connect-form'] .connect-form_dropdown-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  background-color: var(--background-color--background-primary);
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--border-color--border-primary);
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px rgba(10, 10, 10, 0.08);
+  max-height: 30vh;
+  overflow-y: auto;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+[data-component='connect-form'] .connect-form_dropdown.is-open .connect-form_dropdown-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+[data-component='connect-form'] .connect-form_dropdown-item {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-color--text-secondary);
+  border-radius: 0.25rem;
+  transition: background-color 0.15s ease;
+}
+[data-component='connect-form'] .connect-form_dropdown-item:hover,
+[data-component='connect-form'] .connect-form_dropdown-item:focus {
+  background-color: var(--base--light-gray);
+  outline-style: none;
+}
+[data-component='connect-form'] .connect-form_dropdown.is-invalid .connect-form_dropdown-trigger {
+  border-color: #3b0b0b;
+}
+
+/* Submit button states */
+[data-component='connect-form'] .connect-form_button.is-loading {
+  cursor: wait;
+  opacity: 0.7;
+  pointer-events: none;
+}
+[data-component='connect-form'] .connect-form_button.is-error {
+  background-color: #f8e4e4;
+  color: #3b0b0b;
+  border-color: #3b0b0b;
+}
+
+/* Card → form switcher: pre-hide forms before JS takes over */
+[data-component='connect-form'] [data-connect^='form-'] {
+  display: none;
+}
+
+/* Cards */
+[data-component='connect-form'] .connect_card {
+  cursor: pointer;
+  transition:
+    color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-component='connect-form'] .connect_card:focus-visible {
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 4px;
+  outline-color: var(--system--focus-state);
+}
+
+/* Card icon */
+[data-component='connect-form'] .connect_card .connect_icon-wrapper svg {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-component='connect-form'] .connect_card .connect_icon-wrapper svg path {
+  transition: stroke 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-component='connect-form'] .connect_card:hover .connect_icon-wrapper svg {
+  transform: rotate(-6deg);
+}
+[data-component='connect-form'] .connect_card:hover .connect_icon-wrapper svg path {
+  stroke: var(--base--light-red);
+}
+
+/* Card side lines */
+[data-component='connect-form'] .connect_card .connect-form_card-lines {
+  transition:
+    background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-component='connect-form'] .connect_card:hover .connect-form_card-lines {
+  background-color: var(--base--light-red);
+  border-color: var(--base--light-red);
+}
+
+/* Card hover: text + border */
+[data-component='connect-form'] .connect_card:hover {
+  border-color: var(--base--light-red);
+  color: var(--base--light-red);
+}
+[data-component='connect-form'] .connect_card:hover h2,
+[data-component='connect-form'] .connect_card:hover p {
+  color: var(--base--light-red);
+}

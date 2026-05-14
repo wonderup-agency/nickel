@@ -14,6 +14,10 @@
 
 export default [
   {
+    selector: "[data-component='connect-form']",
+    importFn: () => import('./components/connect-form.js'),
+  },
+  {
     selector: "[data-component='logos-marquee']",
     importFn: () => import('./components/logos-marquee.js'),
   },

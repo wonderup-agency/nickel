@@ -51,6 +51,13 @@ An array of `{ selector, importFn }` objects. The selector uses `data-component`
 
 Loaded before any components. Runs on every page regardless of data attributes. Use for analytics, global event listeners, shared setup.
 
+Currently responsible for:
+
+- **Lenis smooth scroll** — initialized site-wide unless `prefers-reduced-motion: reduce` is on. The RAF is wired into `gsap.ticker` so ScrollTrigger reads the latest scroll position before every tick.
+- **`window.__lenis`** — public handle so other components can call `window.__lenis.scrollTo(target)`. Used by `connect-form` (open/close form, scroll to success message).
+- **Anchor hijack** — `<a href="#id">` clicks are intercepted and routed through `lenis.scrollTo`. Focus is moved to the target after the scroll so keyboard / screen-reader users keep context.
+- **Global fade / scroll-reveal animations** — scans the page for `data-component="fade-*"` wrappers and animates them on scroll-enter. Variants: `fade-in`, `fade-up`, `fade-blur`, `fade-stagger`. Per-instance overrides via `data-fade-delay` / `data-fade-duration` / `data-fade-distance` / `data-fade-stagger` / `data-fade-ease`. Auto-stagger when the wrapper has 2+ direct children. Anti-FOUC CSS lives in [`embeds/global-animations.css`](../../embeds/global-animations.css).
+
 ### Lifecycle
 
 - **Init**: The default function body (runs once on load, after DOMContentLoaded)
