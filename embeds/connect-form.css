@@ -36,12 +36,18 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 12px 12px;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
 }
-[data-component='connect-form'] .connect-form_checkbox.is-checked .connect-form_checkbox-box {
+[data-component='connect-form']
+  .connect-form_checkbox.is-checked
+  .connect-form_checkbox-box {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M3.5 8.5l3 3 6-6'/%3e%3c/svg%3e");
 }
-[data-component='connect-form'] .connect-form_checkbox-input:focus-visible + .connect-form_checkbox-box {
+[data-component='connect-form']
+  .connect-form_checkbox-input:focus-visible
+  + .connect-form_checkbox-box {
   outline: 2px solid var(--system--focus-state);
   outline-offset: 2px;
 }
@@ -60,7 +66,9 @@
 [data-component='connect-form'] .iti__selected-flag:focus {
   background-color: transparent;
 }
-[data-component='connect-form'] .iti--separate-dial-code .iti__selected-dial-code {
+[data-component='connect-form']
+  .iti--separate-dial-code
+  .iti__selected-dial-code {
   font-family: var(--_typography---family--body);
   font-size: 1rem;
   color: var(--text-color--text-secondary);
@@ -149,14 +157,17 @@
   color: var(--text-color--text-secondary);
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 [data-component='connect-form'] .connect-form_dropdown-trigger:focus {
   outline-style: none;
   border-color: var(--system--focus-state);
   box-shadow: 0 0 0 3px rgba(97, 28, 51, 0.12);
 }
-[data-component='connect-form'] .connect-form_dropdown-value[data-placeholder='true'] {
+[data-component='connect-form']
+  .connect-form_dropdown-value[data-placeholder='true'] {
   opacity: 0.6;
 }
 [data-component='connect-form'] .connect-form_dropdown-chevron {
@@ -171,7 +182,9 @@
   transform: rotate(45deg) translateY(-2px);
   transition: transform 0.2s ease;
 }
-[data-component='connect-form'] .connect-form_dropdown.is-open .connect-form_dropdown-chevron {
+[data-component='connect-form']
+  .connect-form_dropdown.is-open
+  .connect-form_dropdown-chevron {
   transform: rotate(-135deg) translateY(-2px);
 }
 [data-component='connect-form'] .connect-form_dropdown-list {
@@ -194,9 +207,14 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(-4px);
-  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
 }
-[data-component='connect-form'] .connect-form_dropdown.is-open .connect-form_dropdown-list {
+[data-component='connect-form']
+  .connect-form_dropdown.is-open
+  .connect-form_dropdown-list {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -217,7 +235,9 @@
   background-color: var(--base--light-gray);
   outline-style: none;
 }
-[data-component='connect-form'] .connect-form_dropdown.is-invalid .connect-form_dropdown-trigger {
+[data-component='connect-form']
+  .connect-form_dropdown.is-invalid
+  .connect-form_dropdown-trigger {
   border-color: #3b0b0b;
 }
 
@@ -262,7 +282,11 @@
 [data-component='connect-form'] .connect_card:hover .connect_icon-wrapper svg {
   transform: rotate(-6deg);
 }
-[data-component='connect-form'] .connect_card:hover .connect_icon-wrapper svg path {
+[data-component='connect-form']
+  .connect_card:hover
+  .connect_icon-wrapper
+  svg
+  path {
   stroke: var(--base--light-red);
 }
 

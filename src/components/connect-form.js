@@ -76,8 +76,7 @@ const SUCCESS_MESSAGES = {
 // inside its own CSS. Once Rollup's PostCSS extracts that CSS to dist/styles.css,
 // the relative path resolves to a non-existent location. Point the library's
 // CSS vars at the jsDelivr-hosted copy of the same package so flags render.
-const ITI_FLAGS_BASE =
-  'https://cdn.jsdelivr.net/npm/intl-tel-input@28/dist/img'
+const ITI_FLAGS_BASE = 'https://cdn.jsdelivr.net/npm/intl-tel-input@28/dist/img'
 
 function patchItiFlagPaths() {
   if (patchItiFlagPaths.done) return
@@ -111,7 +110,9 @@ const CLIP_VISIBLE = 'inset(0% 0% 0% 0%)'
  */
 export default function (elements) {
   if (typeof gsap === 'undefined') {
-    console.warn('[connect-form] GSAP not found on window — using instant fallback')
+    console.warn(
+      '[connect-form] GSAP not found on window — using instant fallback'
+    )
     elements.forEach(setupFallback)
     return
   }
@@ -124,9 +125,7 @@ function setupConnectForm(root) {
   const cards = cardsContainer
     ? Array.from(cardsContainer.querySelectorAll('[data-connect]'))
     : []
-  const forms = Array.from(
-    root.querySelectorAll('[data-connect^="form-"]')
-  )
+  const forms = Array.from(root.querySelectorAll('[data-connect^="form-"]'))
 
   if (!cardsContainer || !cards.length || !forms.length) {
     console.warn('[connect-form] missing cards or forms', root)
@@ -235,7 +234,9 @@ function setupConnectForm(root) {
 
   let activeCard = null
   let isAnimating = false
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const reducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches
 
   cards.forEach((card) => {
     const slug = card.getAttribute('data-connect')
@@ -274,18 +275,20 @@ function setupConnectForm(root) {
   // [data-connect-back]; falls back to .button containing "Go back" text.
   forms.forEach((form) => {
     // Neutralize Webflow's decorative item-link inside the back button.
-    form.querySelectorAll('.connect-form_card-top .item-link').forEach((link) => {
-      link.setAttribute('tabindex', '-1')
-      link.setAttribute('aria-hidden', 'true')
-      link.addEventListener('click', (e) => e.preventDefault())
-    })
+    form
+      .querySelectorAll('.connect-form_card-top .item-link')
+      .forEach((link) => {
+        link.setAttribute('tabindex', '-1')
+        link.setAttribute('aria-hidden', 'true')
+        link.addEventListener('click', (e) => e.preventDefault())
+      })
 
     const backTriggers = form.querySelectorAll('[data-connect-back]')
     const triggers = backTriggers.length
       ? Array.from(backTriggers)
-      : Array.from(form.querySelectorAll('.connect-form_card-top .button')).filter(
-          (el) => /go\s*back/i.test(el.textContent || '')
-        )
+      : Array.from(
+          form.querySelectorAll('.connect-form_card-top .button')
+        ).filter((el) => /go\s*back/i.test(el.textContent || ''))
 
     triggers.forEach((trigger) => {
       // Make sure the back trigger is keyboard-reachable.
@@ -401,9 +404,7 @@ function setupConnectForm(root) {
     const formEl = form.querySelector('form')
     const doneBlock = form.querySelector('.w-form-done')
     const isInSuccessState =
-      doneBlock &&
-      doneBlock.style.display &&
-      doneBlock.style.display !== 'none'
+      doneBlock && doneBlock.style.display && doneBlock.style.display !== 'none'
     const resetSuccessState = () => {
       if (!isInSuccessState) return
       if (formEl) formEl.style.removeProperty('display')
@@ -500,9 +501,7 @@ function setupConnectForm(root) {
 // by jumping instantly when the user has it on.
 function smoothScrollTo(target) {
   if (!target) return
-  const reduced = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   if (!reduced && window.__lenis) {
     window.__lenis.scrollTo(target, { duration: 1.0 })
     return
@@ -688,7 +687,8 @@ function buildDropdown(select) {
     } else if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       const focused = items[idx]
-      if (focused) selectValue(focused.dataset.value, focused.textContent.trim())
+      if (focused)
+        selectValue(focused.dataset.value, focused.textContent.trim())
     } else if (e.key === 'Escape') {
       e.preventDefault()
       close()
@@ -726,10 +726,7 @@ function attachCustomValidation(formEl) {
       e.preventDefault()
       e.stopImmediatePropagation()
       const wrapper = select.previousElementSibling
-      if (
-        wrapper &&
-        wrapper.classList.contains('connect-form_dropdown')
-      ) {
+      if (wrapper && wrapper.classList.contains('connect-form_dropdown')) {
         wrapper.classList.add('is-invalid')
         const trigger = wrapper.querySelector('.connect-form_dropdown-trigger')
         if (trigger) trigger.focus()
@@ -753,8 +750,6 @@ function setupFallback(root) {
   )
   forms.forEach((form) => (form.style.display = 'none'))
 
-  let activeCard = null
-
   cards.forEach((card) => {
     const slug = card.getAttribute('data-connect')
     const target = formBySlug.get(CARD_TO_FORM[slug])
@@ -762,7 +757,6 @@ function setupFallback(root) {
     card.addEventListener('click', () => {
       cardsContainer.style.display = 'none'
       target.style.display = 'block'
-      activeCard = card
     })
   })
 
@@ -775,7 +769,6 @@ function setupFallback(root) {
         e.preventDefault()
         form.style.display = 'none'
         cardsContainer.style.removeProperty('display')
-        activeCard = null
       })
     })
   })
